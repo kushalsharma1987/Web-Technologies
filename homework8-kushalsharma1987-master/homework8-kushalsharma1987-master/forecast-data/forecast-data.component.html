@@ -1,0 +1,53 @@
+<!-- {{ weatherData.daily.data[1].summary }} -->
+<div *ngIf="weatherString">
+    <!-- <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-current" role="tab" aria-controls="nav-current" aria-selected="true">Current</a>
+          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-hourly" role="tab" aria-controls="nav-hourly" aria-selected="false">Hourly</a>
+          <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-weekly" role="tab" aria-controls="nav-weekly" aria-selected="false">Weekly</a>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-current" role="tabpanel" aria-labelledby="nav-current-tab">{{ weatherData.daily.data[1].summary }} Current Data</div>
+        <div class="tab-pane fade" id="nav-hourly" role="tabpanel" aria-labelledby="nav-hourly-tab">Hourly Data</div>
+        <div class="tab-pane fade" id="nav-weekly" role="tabpanel" aria-labelledby="nav-weekly-tab">Weekly Data</div>
+    </div> -->
+    <!-- <nav>
+        <a routerLink="/#nav-current">Currently</a>
+        <a routerLink="/#nav-hourly">Hourly</a>
+        <a routerLink="/#nav-weekly">Weekly</a>
+      </nav> -->
+
+      <div class='row'>
+          
+      <div style="width: 80%">
+      <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
+
+        <mat-tab label="Current"> <current [weatherData]="weatherData" [geocodeData]="geocodeData" [currlocData]="currlocData" [cityValue]="cityValue" [imageString]="imageString"></current> </mat-tab>
+        <mat-tab label="Hourly"> <hourly [weatherData]="weatherData"></hourly> </mat-tab>
+        <mat-tab label="Weekly"> <weekly [weatherData]="weatherData" *ngIf="weeklyTab" [weeklyTab]="weeklyTab"></weekly></mat-tab>
+      </mat-tab-group>
+      
+    </div >
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class='row' style="text-align:right;width:10%;float:right;">
+        <span style="text-align: right;">
+        <a class="nav-link" id="fav-tab" class="twitter-share-button" (click) = "tweet()" id="twitter">
+                  <img style="width:20px;" id = "twitter" src = "https://csci571.com/hw/hw8/Images/Twitter.png" alt = "twitter">
+        </a>
+      </span>
+      <span style="text-align: right;">
+          <a class="nav-link" id="fav-tab" data-toggle="tab" href="#fav" role="tab" aria-controls="fav" aria-selected="false">
+              <i class="material-icons" *ngIf = "!favoriteBtn" (click) = "clickedFavoriteBtn()" id = "star-hollow">
+                star_border
+              </i>
+              <i style="color:yellow;" class="material-icons" *ngIf = "favoriteBtn" (click) = "clickedFavoriteBtn()" id = "star-solid">
+                star
+              </i>
+            </a>
+          </span>
+      </div>
+    
+
+    <!-- <router-outlet></router-outlet> -->
+</div>

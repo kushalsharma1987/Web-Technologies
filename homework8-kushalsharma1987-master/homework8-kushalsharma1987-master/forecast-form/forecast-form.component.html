@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+<div class="text-center container col-sm-8" style="width:50%;border-radius:1%;align-content:center;background-color: steelblue; color: white;text-align: center;">
+    <br><br>
+    <h1>Weather Search</h1>
+    <div style="align-content: left;width:70%;height:50%;background-color: steelblue; color: white;text-align: left;">
+<form [formGroup]="addressForm" class="form-horizontal" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-group row">
+        <label for="street" class="col-sm-2 col-form-label">Street <span style="color:red" class = "required">*</span></label>
+        <div class="col-sm-8">
+        <input required formControlName="street" name="street" id="street" type="text" class="form-control" placeholder="Enter Street Name">
+        <!-- <small style="color:red;font-size:medium;" [class.d-none]="streetCtrl.valid || streetCtrl.untouched">Please enter a street</small> -->
+        
+        <small style="color:red;font-size:medium;" *ngIf="street.invalid && addressForm.get('street').touched ">Please enter a street</small>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="city" class="col-sm-2 col-form-label">City <span style="color:red" class = "required">*</span></label>
+        <div class="col-sm-8">
+        <input required (keyup)="cityAutocomplete()" formControlName="city" name="city" id="city" type="text" class="form-control"  placeholder="Enter City Name" [matAutocomplete]="auto">
+        <!-- <small style="color:red;font-size:medium;" [class.d-none]="cityCtrl.valid || cityCtrl.untouched">Please enter a city</small> -->
+        <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of autocompleteOptions" [value]="option">
+                  {{option}}
+                </mat-option>
+        </mat-autocomplete>
+        <small style="color:red;font-size:medium;" *ngIf="city.invalid && addressForm.get('city').touched ">Please enter a city</small>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="state" class="col-sm-2 col-form-label">State <span style="color:red" class = "required">*</span></label>
+        <div class="col-sm-8">
+        <select required formControlName="state" name="state" class="custom-select" id="state">
+            <option selected="selected" value=""> Select State</option>
+            <option *ngFor="let state of states">{{ state.State }}</option>
+        </select>
+        <!-- <small style="color:red;font-size:medium;" [class.d-none]="!stateError || stateCtrl.untouched">Please enter a state</small> -->
+        <small style="color:red;font-size:medium;" *ngIf="state.invalid && addressForm.get('state').touched ">Please enter a state</small>
+        </div>  
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="currentLoc" (change)="clickedCurrentLoc()">
+        <label class="form-check-label" for="currentLoc">
+            Current Location
+        </label>
+    </div>
+    <br>
+    <span>
+        <button  style="background-color:white;color:gray;" [disabled]="(!addressForm.valid) && (!currentLocCtrl)" type="submit" id="search" class="btn btn-primary">
+                <i class="material-icons">search</i>Search</button>
+        &nbsp; &nbsp;
+        <button style="background-color: white;color:gray;" type="reset" class="btn btn-primary" (click)="clickedClear()">
+            <i class="material-icons">clear_all</i>Clear</button>  
+    </span>
+    <br><br>
+</form>
+</div>
+</div>
+      <br> <br>
+      <button style="background-color:steelblue;color:white;" type="button" class="btn btn-secondary" id="results" (click)="clickedResults()">Results</button>
+      &nbsp;&nbsp;
+      <button style="background-color:white;color:gray;" type="reset" class="btn btn-secondary" id="favorites" (click)="clickedFavorites()">Favorites</button>
+      <br> <br>
+      <div *ngIf="invalidAddress" class = "container" id = "invalid">Invalid Address.</div>
+      <progress-bar *ngIf= "progressBar"></progress-bar>
+      <favorites *ngIf="favorites"></favorites>
+      
+            
+<forecast-data *ngIf="results" [weatherData]="forecastData" [weatherString]="weatherString" [geocodeData]="geocodeData" [currlocData]="currlocData" [imageString]="imageString" [cityValue] = "cityValue" [stateValue]="stateValue"></forecast-data>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

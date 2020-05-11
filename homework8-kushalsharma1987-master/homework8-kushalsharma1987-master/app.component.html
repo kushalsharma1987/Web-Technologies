@@ -1,0 +1,56 @@
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+<div class="text-center" style="align-content: center;left:50%;width:70%;height:80%;background-color: steelblue; color: white;text-align: center;">
+    <h1>Weather Search</h1>
+    <div style="align-content: left;width:70%;height:50%;background-color: steelblue; color: white;text-align: left;">
+<form #addressForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-group">
+        <label for="street">Street *</label>
+        <input required [(ngModel)]="addressModel.street" name="street" #street="ngModel" [class.is-invalid]="street.invalid && street.touched" id="street" type="text" class="form-control" placeholder="Enter Street Name">
+        <small style="color:red;font-size:medium;" [class.d-none]="street.valid || street.untouched">Please enter a street</small>
+    </div>
+    <div class="form-group">
+        <label for="city">City *</label>
+        <input required [(ngModel)]="addressModel.city" name="city" #city="ngModel" id="city" type="text" class="form-control"  placeholder="Enter City Name">
+        <small style="color:red;font-size:medium;" [class.d-none]="city.valid || city.untouched">Please enter a city</small>
+    </div>
+    <div class="form-group">
+        <label for="state">State *</label>
+        <select (blur)="validateState(state.value)" (change)="validateState(state.value)" required [(ngModel)]="addressModel.state" name="state" #state="ngModel" class="custom-select" id="state">
+            <option selected="selected" value="">Select State</option>
+            <option *ngFor="let state of states">{{ state.State }}</option>
+        </select>
+        <small style="color:red;font-size:medium;" [class.d-none]="!stateError || state.untouched">Please enter a state</small>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="currentLoc">
+        <label class="form-check-label" for="currentLoc">
+            Current Location
+        </label>
+    </div>
+    <span>
+        <button [disabled]="addressForm.form.invalid || stateError" type="submit" class="btn btn-primary">Search</button>
+        <button type="reset" class="btn btn-primary">Clear</button>  
+    </span>
+</form>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html> -->
+<!-- <welcome-page></welcome-page> -->
+<forecast-form></forecast-form>
+
+<!-- <nav>
+    <a routerLink="/forecast-form">Search the city weather</a>
+</nav> -->
+
+<!-- <router-outlet></router-outlet> -->

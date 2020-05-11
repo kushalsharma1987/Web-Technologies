@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+    <meta charset="utf-8"/>
+    <TITLE>kshar19-Homework 4</TITLE>
+    <script type = "text/javascript" charset="utf-8" language="javascript">
+        function generateHTML(jsonObj) {
+            root=jsonObj.DocumentElement;
+            html_text="<html><head><title>Largest Manufacturers by Production (2017)</title></head><body>";
+            html_text+="<table border cellpadding='"+"5"+"' valign='"+"center"+"'>";
+            tableHeader=jsonObj.Mainline.Table.Header.Data; // an array of table headers
+            html_text+="<tbody>";
+            html_text+="<tr>";
+            // output the headers
+            for(i=0;i<tableHeader.length;i++) {
+                html_text+="<th>"+tableHeader[i]+"</th>";
+            }
+            html_text+="</tr>";
+            rowList = jsonObj.Mainline.Table.Row;  // an array of all car manufacturers
+            // output out the values
+            for(i=0;i<rowList.length;i++)  {    //for all car manufacturers (one per row)
+                html_text+="<tr>";              //start a new row of the output table
+                rowNodeList = rowList[i];       // get object list of one car manufacturer (an object)
+                for(j=0; j<tableHeader.length; j++){     //Output based on header to address relative ordering of keys
+                    switch(j){
+                        case 0: prop = "Rank"; break;
+                        case 1: prop = "Group"; break;
+                        case 2: prop = "Hubs"; break;
+                        case 3: prop = "Vehicles"; break;
+                        case 4: prop = "HomePage"; break;
+                        case 5: prop = "Logo";
+                    } 
+                    if(prop == "HomePage") {    //special case to handle Homepage link, Logo picture and Hubs array
+                        if(rowNodeList[prop] != null && rowNodeList[prop] != ""){
+                            html_text+="<td><a href='"+rowNodeList[prop]+"'>"+rowNodeList[prop]+"</a></td>";
+                        } else {
+                            html_text+="<td></td>";
+                        }
+                    } else if(prop == "Logo") {
+                        if(rowNodeList[prop] != null && rowNodeList[prop] != ""){
+                            html_text+="<td><img src='"+rowNodeList[prop]+"' width='"+"150"+"' height='"+"150"+"'></td>";
+                        } else {
+                            html_text+="<td width='"+"150"+"' height='"+"150"+"'></td>";
+                        }
+                    } else if(prop == "Hubs") {
+                        hub = rowNodeList.Hubs.Hub;
+                        html_text+="<td><ul>";
+                        for(k=0; k<hub.length; k++){
+                            if(hub[k] != null && hub[k] != ""){
+                                if(k==0){
+                                    html_text+="<li><b>"+hub[k]+"</b></li>";
+                                } else {
+                                    html_text+="<li>"+hub[k]+"</li>";
+                                }
+                            }
+                        }
+                        html_text+="</ul></td>";
+                    } else {
+                        if(rowNodeList[prop] != null && rowNodeList[prop] != ""){
+                            html_text+="<td>"+rowNodeList[prop]+"</td>";
+                        } else {
+                            html_text+="<td></td>";
+                        }
+                    }
+                }
+                html_text+="</tr>";             //end of one row of the output table
+            }
+            html_text+="</tbody>";
+            html_text+="</table>";
+            html_text+="</bo"+"dy>"+"</html>"; 
+        }
+        function processJSON(fileName){
+            if(fileName == ""){
+                alert('No file name given. Please give the correct file name!');
+                return;
+            }
+            var URL = fileName;
+            function loadJSON(url) {
+                xmlhttp=new XMLHttpRequest();
+                xmlhttp.open("GET",url,false);
+                xmlhttp.send();
+                jsonObj= JSON.parse(xmlhttp.responseText);
+                return jsonObj;
+            }
+            try{
+            jsonObj = loadJSON(URL);
+            } catch(err){
+                alert('Error while loading JSON file. JSON file name or location not correct!!');
+                return;
+            }
+            try{
+                jsonObj.onload=generateHTML(jsonObj);
+            } catch(error) {
+                alert('Error while processing JSON file. JSON file format not correct!!');
+                return;
+            }
+            hWin = window.open("", "Assignment4", "height=800,width=1500");
+            hWin.document.write(html_text);
+            hWin.document.close();
+        }
+    </script>
+</HEAD>
+<BODY>
+    <div style="text-align: center;top: 50vh; height: 100vh;" >
+        <H2 style="align-content: center">Enter URL for largest manufacturers by production (2017) List JSON File</H2><br>
+        <INPUT TYPE="text" id="JSONfile"><br><br>
+        <INPUT TYPE="button" VALUE="Submit Query" onclick="processJSON(document.getElementById('JSONfile').value)"><br>
+    </div>
+</BODY>
+</HTML>

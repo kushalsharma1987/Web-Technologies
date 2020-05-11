@@ -1,0 +1,199 @@
+body{
+    margin: 0 auto;
+    padding: 0;
+    background: black;
+    width: 980px;
+    height: 100%;
+    align-items: center;    
+}
+.parallax{
+    perspective: 1px;
+    perspective-origin: center top;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transform-style: preserve-3d;
+    z-index: -1;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    width: 980px;
+    box-sizing: border-box;
+    height: 30px;
+    background-color: white;
+    z-index: 999;
+    overflow: hidden;
+}
+#header-name {
+    color: rgb(63, 7, 116);
+    width:  400px;
+    text-align: center;
+    font-family: serif;
+    font-style: italic;
+    display: inline-block;
+}
+#menu {
+    text-align: center;
+    left: 500px;
+    display: inline;
+}
+#menu span{
+    color: rgb(63, 7, 116);
+    margin: 0 auto;
+    padding: 30px 20px;
+    font-size: 10px;
+    font-family: sans-serif;
+}
+.profile{
+    position: absolute;
+    top: 310px;
+    left: 250px;
+    width: 480px;
+    background-color: white;
+    transform: translateZ(0);
+    z-index: 1;
+}
+.profile-img{
+    position: relative;
+    padding: 40px 30px;
+    height: 180px;
+    overflow:   hidden;  
+}
+.crop-face{
+    position: relative;
+    float: left;
+    height: 180px;
+    width: 150px;
+    margin-right: 20px;
+    overflow: hidden;
+}
+#face{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    padding-right: 20px;
+}
+.image1{
+    background-image: url("http://csci571.com/hw/hw3/images/coffee2.jpg");
+    min-height: 1000px;
+    min-width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translateZ(-1px);
+    z-index: -1;
+}
+.image2{
+    background-image: url("http://csci571.com/hw/hw3/images/coffee1.jpg");
+    min-height: 1000px;
+    min-width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: translateZ(-1px);
+    z-index: -1;
+}
+.columns{
+    position: absolute;
+    top: 780px;
+    left: 0px;
+    width: 980px;
+    height: 500px;
+    background-color: white;
+    padding: 0;
+    margin: 0;
+    transform: translateZ(0);
+    z-index: 1;
+}
+#column1 {background-color: rgb(56, 149, 202); color: white; text-align: left; position : relative;
+    width:287px; height: 300px; float: left; font:8pt/22pt sans-serif; padding: 200px 0 0 40px; margin: 0; 
+    display: inline-block;}
+#column2 {background-color:rgb(72, 5, 134); color: white; text-align: left; position : relative;
+    width: 287px;; height: 300px; float: left; font:8pt/22pt sans-serif; padding: 200px 0 0 40px; margin: 0; 
+    display: inline-block;}
+#column3 {background-color: rgb(140, 80, 196); color: white; text-align: left; position : relative;
+    width:286px; height: 300px; float: left; font:8pt/22pt sans-serif; padding: 200px 0 0 40px; margin: 0; 
+    display: inline-block;}
+
+.content{
+    position: relative;
+    padding: 200px 100px;
+    background-color: rgb(72, 5, 134);
+    color: white;
+    font-size: 30px;
+    font-family: 'Raleway';
+    transform: translateZ(0);
+    z-index: 1;
+}
+footer{
+    padding: 100px 120px;
+    height: 200px;
+    background-color: white;
+}
+.contact-me {
+    display: inline-block;
+    position: relative;
+    width: 300px;
+    height: 220px;
+    overflow: hidden;
+    color: rgb(72, 5, 134);
+    font-family: 'Raleway';
+}
+#copyright {
+    bottom: 0;
+    position: absolute;
+}
+.text-input{
+    display: inline-block;
+    width: 350px;
+    padding-top: 40px;
+    overflow: hidden;
+    float: right;
+}
+input[type=text]{
+    width:  90%;
+    color: rgb(72, 5, 134);
+    font-family: 'Raleway';
+    padding: 5px 10px;
+    font-size: 8px;
+    margin: 2px;
+}
+input[type=email]{
+    width:  90%;
+    color: rgb(72, 5, 134);
+    font-family: 'Raleway';
+    padding: 5px 10px;
+    font-size: 8px;
+    margin: 2px;
+}
+input[type=tel]{
+    width:  90%;
+    color: rgb(72, 5, 134);
+    font-family: 'Raleway';
+    padding: 5px 10px;
+    font-size: 8px;
+    margin: 2px;
+}
+input[type=submit]{
+    float: right;
+    width: 70px;
+    background-color: rgb(72, 5, 134);
+    color: white;
+    font-family: sarif;
+    font-style: italic;
+    padding: 5px;
+    font-size: 12px;
+    margin: 2px 10px;
+}
+textarea{
+    width:  90%;
+    color: rgb(72, 5, 134);
+    font-family: 'Raleway';
+    padding: 10px 5px 15px 15px;
+    font-size: 8px;
+    margin: 2px;
+    height: 70px;
+    resize: none;
+}

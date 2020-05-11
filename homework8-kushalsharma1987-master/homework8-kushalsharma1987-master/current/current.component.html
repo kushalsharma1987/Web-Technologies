@@ -1,0 +1,26 @@
+<div class = "col" style="margin:2%;">
+<div class = "container col-sm-7" style="width:50%;background-color:skyblue;border: solid black 1px;border-radius: 10px;">
+    <!-- <p *ngIf="currlocData"><b>{{ currlocData.city}}</b></p> -->
+    <div style="margin:5%">
+        <div style="float:left;text-align: left;">
+            <p style="font-size:24px;"><b>{{ cityValue }}</b></p> 
+            <p style="font-size:24px;color: #1d4724;"><b>{{ weatherData.timezone }}</b></p>
+            <p style="font-size:34px;"><b>{{ temp }} <b><img src="https://cdn3.iconfinder.com/data/icons/virtual-notebook/16/button_shape_oval-512.png" alt="degree" style="margin-bottom:30px; width:10px; height:10px;"></b><span> F</span></b></p>
+            <p style="font-size:20px;"><b>{{ weatherData.currently.summary }}</b></p>
+        </div>
+        <div>
+            <p *ngIf="imageString"><img src="{{ imageString }}" alt="Seal" style="width:40%;"></p>
+        </div>
+    </div>
+    <div style="width:100%;margin:2%">
+        <span title="Humidity" style="text-align:center;display: inline-block;width:10%"><img src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-16-512.png" alt="Humidity" style="width:20px; height:20px;"><br><b>{{ weatherData.currently.humidity }}</b></span>
+        <span title="Pressure" style="text-align:center;display: inline-block;margin-left: 5%;width:10%"><img src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-25-512.png" alt="Pressure" style="width:20px; height:20px;"><br><b>{{ weatherData.currently.pressure }}</b></span>
+        <span title="Wind Speed" style="text-align:center;display: inline-block;margin-left: 5%;width:10%"><img src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-27-512.png" alt="Wind Speed" style="width:20px; height:20px;"><br><b>{{ weatherData.currently.windSpeed }}</b></span>
+        <span title="Visibility" style="text-align:center;display: inline-block;margin-left: 5%;width:10%"><img src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-30-512.png" alt="Visibility" style="width:20px; height:20px;"><br><b>{{ weatherData.currently.visibility }}</b></span>
+        <span title="Cloud Cover" style="text-align:center;display: inline-block;margin-left: 5%;width:10%"><img src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-28-512.png" alt="Cloud Cover" style="width:20px; height:20px;"><br><b>{{ weatherData.currently.cloudCover }}</b></span>
+        <span title="Ozone" style="text-align:center;display: inline-block;margin-left: 5%;width:10%"><img src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-24-512.png" alt="Ozone" style="width:20px; height:20px;"><br><b>{{ weatherData.currently.ozone }}</b></span>
+    </div>
+           
+
+</div>
+</div>

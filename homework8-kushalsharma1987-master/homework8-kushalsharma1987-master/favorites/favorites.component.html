@@ -1,0 +1,31 @@
+<div  class = "container" *ngIf="!hasRecords" style="color: #663300;background-color: khaki;padding: 1%;border-radius: 5px;">
+            No Records.</div>
+<div *ngIf = "hasRecords">
+  <table class="table container">
+    <thead>
+    <tr style = "background-color:#6D91AB">
+      <th scope = "col"><div class = "centered">#</div></th>
+      <th scope = "col"><div class = "centered">Image</div></th>
+      <th scope = "col"><div class = "centered">City</div></th>
+      <th scope = "col"><div class = "centered">State</div></th>
+      <th scope = "col"><div class = "centered">Favorites</div></th>
+    </tr>
+    </thead>
+    <tr *ngFor = "let favorite of favorites; let i = index" [ngStyle]="{'background-color': i%2 == 1 ? '#6D91AB' : '#66abe3'}">
+      <th scope = "row"><div style="text-align:center;">{{i+1}}</div></th>
+      <td class = "image-container" >
+        <div class = "image" style="text-align:center;">
+          <img src="{{ favorite.stateSeal }}" alt="State Seal"  class = "sealImage">
+        </div>
+      </td>
+      <td><div style="text-align:center;" id = "city" (click) = 'getFavoriteResult($event)'>{{favorite.city}}</div></td>
+      <td><div style="text-align:center;">{{favorite.state}}</div></td>
+      <td><div style="text-align:center;" (click) = "deleteFavorite($event)">
+        <i class="material-icons">
+          delete
+        </i>
+      </div></td>
+    </tr>
+  </table>
+</div>
+
